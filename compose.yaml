@@ -1,0 +1,23 @@
+version: "3.3"
+services:
+  apcupsd:
+    image: apcupsd
+    container_name: apcupsd
+    stdin_open: true
+    tty: true
+    devices:
+      - /dev/usb/hiddev0
+    networks:
+      - apcupsd
+    ports:
+      - 3551:3551
+    volumes:
+      - /docker/containers/apcupsd/config/apcupsd.conf:/etc/apcupsd/apcupsd.conf
+      - apcupsd-logs:/var/log
+volumes:
+  apcupsd-logs:
+    external: true
+networks:
+  apcupsd:
+    name: apcupsd
+
