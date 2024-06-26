@@ -3,6 +3,7 @@ services:
   apcupsd:
     image: apcupsd
     container_name: apcupsd
+    restart: always
     stdin_open: true
     tty: true
     devices:
