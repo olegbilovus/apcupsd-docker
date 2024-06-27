@@ -11,9 +11,12 @@ services:
     networks:
       - apcupsd
     ports:
-      - 3551:3551
+      - 127.0.0.1:3551:3551
+    environment:
+      - GOTIFY_HOST=http://gotify
+      - GOTIFY_TOKEN= #token
     volumes:
-      - /docker/containers/apcupsd/config/apcupsd.conf:/etc/apcupsd/apcupsd.conf
+      - /path/to/apcupsd.conf:/etc/apcupsd/apcupsd.conf
       - apcupsd-logs:/var/log
 volumes:
   apcupsd-logs:

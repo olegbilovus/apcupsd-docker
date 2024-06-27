@@ -1,8 +1,4 @@
 #!/bin/sh
-#
-# This shell script if placed in /etc/apcupsd
-# will be called by /etc/apcupsd/apccontrol when the UPS
-# goes on batteries.
 
 TITLE="⚡️[$1] Power Failure !!!"
 STATUS=`/sbin/apcaccess status`
