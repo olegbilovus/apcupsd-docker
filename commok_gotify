@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# This shell script if placed in /etc/apcupsd
+# will be called by /etc/apcupsd/apccontrol when the UPS
+# goes on batteries.
+
+TITLE="✅️📶[$1] Communication restored"
+STATUS=`/sbin/apcaccess status`
+
+echo "Sending notification to $GOTIFY_HOST"
+(curl -sk "$GOTIFY_HOST/message?token=$GOTIFY_TOKEN" -F "title=$TITLE" -F "message=$STATUS" -F "priority=10" && echo "Notification sent" && exit 0) || (>&2 echo "Error sending notificatiom" && exit 1)
+
